@@ -1,0 +1,28 @@
+h1 Create a link
+
+= form_for @link do |f|
+
+  - if @link.errors.any?
+    ul
+      - @link.errors.full_messages.each do |msg|
+        li = msg
+
+  = f.text_field :url
+
+  / I'm copying shoutkey.com
+  / Students were locked out of the Brazos room D:
+  select name="link[expire_date]"
+    option value="5" 5 minutes
+    option value="30" 30 minutes
+    option value="60" 1 hour
+    option value=(60 * 12) 12 hour
+    option value=(50 * 24) 24 hour
+
+  = f.submit
+
+/ For testing let's list all links
+- Link.all.each do |link|
+  .link
+    h3 = link.url
+    p = link.short_url
+    p = link.expire_date
