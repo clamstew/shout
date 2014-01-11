@@ -5,6 +5,7 @@ gem 'rails', '4.0.2'
 
 # Database stuff
 gem 'pg'
+gem 'randumb', '~> 0.4.1'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

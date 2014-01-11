@@ -12,6 +12,12 @@ class LinksController < ApplicationController
     @link = Link.new(create_params)
 
     if @link.save
+      # Assign a short word to this link
+      word = UrlWord.where(:link_id => nil).random(1).first
+      # TODO: Check if word is nil (only happens when all words are in use)
+      word.link = @link
+      word.save!
+
       render 'create'
     else
       render 'new'

@@ -3,6 +3,8 @@ h1 You created the link!
 
 h3 Here it is:
 
+= link_to "mks.io/#{@link.url_word.word}", @link.url
+
 .link
   h3 = @link.url
   p = @link.short_url

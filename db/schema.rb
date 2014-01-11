@@ -23,4 +23,14 @@ ActiveRecord::Schema.define(version: 20140111205814) do
     t.datetime "updated_at"
   end
 
+  create_table "url_words", force: true do |t|
+    t.string   "word"
+    t.integer  "link_id"
+    t.datetime "expire_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "url_words", ["link_id"], name: "index_url_words_on_link_id", using: :btree
+
 end
