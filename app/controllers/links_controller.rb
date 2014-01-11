@@ -21,6 +21,16 @@ class LinksController < ApplicationController
   end
 
   def show
+    word = UrlWord.find_by(:word => params[:path])
+    puts "Finding #{params[:path]} -> #{word.inspect}"
+
+    if word.nil? || word.link_id.nil? || word.expired?
+      # Free word if needed
+      word.update(:link_id => nil) if word.expired?
+      raise ActionController::RoutingError.new('Not Found')
+    else
+      redirect_to word.link.url
+    end
   end
 
   private

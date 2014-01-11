@@ -76,7 +76,6 @@ way
 look
 first
 also
-new
 day
 more
 use
@@ -1184,7 +1183,6 @@ museum
 beauty
 unique
 ethnic
-link
 stress
 select
 root
@@ -1444,7 +1442,6 @@ slow
 slide
 widely
 inform
-link
 mass
 lake
 bother
