@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20140111205814) do
 
   create_table "url_words", force: true do |t|
     t.string   "word"
-    t.integer  "link_id"
     t.datetime "expire_date"
+    t.integer  "link_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

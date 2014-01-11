@@ -11,7 +11,7 @@ h1 Create a link
 
   / I'm copying shoutkey.com
   / Students were locked out of the Brazos room D:
-  select name="link[expire_date]"
+  select name="expire_date"
     option value="5" 5 minutes
     option value="30" 30 minutes
     option value="60" 1 hour
@@ -21,8 +21,9 @@ h1 Create a link
   = f.submit
 
 / For testing let's list all links
-- Link.all.each do |link|
+- UrlWord.all.each do |word|
+  - next unless word.link_id
   .link
-    h3 = link.url
-    p = link.short_url
-    p = link.expire_date
+    h3 = word.link.url
+    p = word.word
+    p = word.expire_date
