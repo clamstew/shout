@@ -53,7 +53,7 @@ $body-font-family: "Oxygen", "Helvetica Neue", "Helvetica", Helvetica, Arial, sa
 $primary-color: #32a4e2;
 // $secondary-color: #e7e7e7;
 $alert-color: #d9593f;
-// $success-color: #43AC6A;
+$success-color: #3dd68f;
 // $warning-color: #f08a24;
 // $info-color: #a0d3e8;
 
@@ -132,7 +132,7 @@ $alert-color: #d9593f;
 
 // We use these to control text style.
 // $alert-font-weight: normal;
-// $alert-font-size: rem-calc(13);
+$alert-font-size: rem-calc(16);
 // $alert-font-color: #fff;
 // $alert-font-color-alt: scale-color($secondary-color, $lightness: -66%);
 
@@ -1189,3 +1189,12 @@ $header-font-weight: 800;
 // $include-html-visibility-classes: $include-html-classes;
 
 @import 'foundation';
+
+.alert-box.success {
+  color: hsla(152, 65%, 15%, 1);
+  a {
+    color: white;
+    text-decoration: underline;
+    &:hover { color: hsla(152, 89%, 93%, 1); }
+  }
+}

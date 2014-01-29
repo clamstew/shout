@@ -1,0 +1,31 @@
+
+.row
+  .large-6.columns.large-centered
+    h3.subtitle WELCOME TO THE
+    h1.super-bold
+      a href="/" ADMIN PANEL
+
+    = form_for @link, :url => admin_path do |f|
+
+      - if params[:action] != 'new' && @word.blank?
+        .alert-box.alert data-alert=''
+          | Please enter a word.
+      - elsif @word_free == false
+        .alert-box.alert data-alert=''
+          | The word "#{@word}" is currently in use!
+          br
+          br
+          = @url_word.link.url
+      - elsif @link.errors.any?
+        / Since there's only one validation, we can assume it's the url
+        .alert-box.alert data-alert=''
+          | Please enter a valid URL
+          a.close href="#" &times;
+
+      = f.label :url, 'URL to Shorten:'
+      = f.text_field :url
+
+      label for="word" English Word to Use:
+      input type="text" name="word" value=@word
+
+      button.small-12 Create Shout URL

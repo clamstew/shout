@@ -5,6 +5,12 @@ class LinksController < ApplicationController
 
   def create
     @link = Link.new(link_params)
+
+    if @link.url == ENV['ADMIN_URL']
+      session[:admin] = true
+      return redirect_to new_admin_path
+    end
+
     @minute_count = params[:expire_date].to_i
 
     if not valid_minute_counts.include?(@minute_count)
@@ -14,13 +20,13 @@ class LinksController < ApplicationController
 
     if @bad_expire.nil? && @link.save
       # Assign a short word to this link
-      word = UrlWord.where(:link_id => nil).random(1).first
+      url_word = UrlWord.where(:link_id => nil).random(1).first
       # TODO: Check if word is nil (only happens when all words are in use)
-      word.link = @link
-      word.expire_date = DateTime.now + @minute_count.minutes
-      word.save!
+      url_word.link = @link
+      url_word.expire_date = DateTime.now + @minute_count.minutes
+      url_word.save!
 
-      @word = word.word
+      @word = url_word.word
       render 'create'
     else
       render 'new'

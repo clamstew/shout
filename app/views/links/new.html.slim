@@ -5,6 +5,11 @@
     h1.super-bold
       a href="/" <span>SHOUT!</span> URL
 
+    - if session[:admin]
+      .alert-box.success.text-center
+        ' Welcome, Admin.
+        = link_to 'Visit the Admin Panel', admin_path
+
     = form_for @link do |f|
 
       - if @link.errors.any?
