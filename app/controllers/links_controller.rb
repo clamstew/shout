@@ -21,7 +21,12 @@ class LinksController < ApplicationController
     if @bad_expire.nil? && @link.save
       # Assign a short word to this link
       url_word = UrlWord.where('expire_date < ?', DateTime.now).random(1).first
-      # TODO: Check if word is nil (only happens when all words are in use)
+
+      if url_word.nil?
+        @all_taken = true
+        return render 'new'
+      end
+
       url_word.link = @link
       url_word.expire_date = DateTime.now + @minute_count.minutes
       url_word.save!

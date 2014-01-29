@@ -10,6 +10,10 @@
         ' Welcome, Admin.
         = link_to 'Visit the Admin Panel', admin_path
 
+    - if @all_taken
+      .alert-box.alert.text-center
+        | We're sorry, all words are currently taken!
+
     = form_for @link do |f|
 
       - if @link.errors.any?
