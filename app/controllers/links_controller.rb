@@ -8,7 +8,7 @@ class LinksController < ApplicationController
 
     if @link.url == ENV['ADMIN_URL']
       session[:admin] = true
-      return redirect_to new_admin_path
+      return redirect_to admin_path
     end
 
     @minute_count = params[:expire_date].to_i
