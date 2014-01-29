@@ -5,15 +5,22 @@ class LinksController < ApplicationController
 
   def create
     @link = Link.new(link_params)
+    @minute_count = params[:expire_date].to_i
 
-    if @link.save
+    if not valid_minute_counts.include?(@minute_count)
+      @bad_expire = true
+      @link.errors.add(:url)
+    end
+
+    if @bad_expire.nil? && @link.save
       # Assign a short word to this link
       word = UrlWord.where(:link_id => nil).random(1).first
       # TODO: Check if word is nil (only happens when all words are in use)
       word.link = @link
-      word.expire_date = DateTime.now + params[:expire_date].to_i.minutes
+      word.expire_date = DateTime.now + @minute_count.minutes
       word.save!
 
+      @word = word.word
       render 'create'
     else
       render 'new'
@@ -34,6 +41,10 @@ class LinksController < ApplicationController
   end
 
   private
+
+  def valid_minute_counts
+    [5, 30, 60, 60*12, 60*24]
+  end
 
   def link_params
     params.require(:link).permit(:url)

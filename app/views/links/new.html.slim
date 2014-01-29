@@ -1,29 +1,26 @@
-h1 Create a link
 
-= form_for @link do |f|
+.row
+  .large-6.columns.large-centered
+    h3.subtitle CREATE A
+    h1.super-bold
+      a href="/" <span>SHOUT!</span> URL
 
-  - if @link.errors.any?
-    ul
-      - @link.errors.full_messages.each do |msg|
-        li = msg
+    = form_for @link do |f|
 
-  = f.text_field :url
+      - if @link.errors.any?
+        / Since there's only one validation, we can assume it's the url
+        .alert-box.alert data-alert=''
+          | Please enter a valid URL
+          a.close href="#" &times;
 
-  / I'm copying shoutkey.com
-  / Students were locked out of the Brazos room D:
-  select name="expire_date"
-    option value="5" 5 minutes
-    option value="30" 30 minutes
-    option value="60" 1 hour
-    option value=(60 * 12) 12 hour
-    option value=(50 * 24) 24 hour
+      = f.label :url, 'URL to Shorten:'
+      = f.text_field :url
 
-  = f.submit
+      select name="expire_date"
+        option value="5" 5 minutes
+        option value="30" 30 minutes
+        option value="60" 1 hour
+        option value=(60 * 12) 12 hours
+        option value=(60 * 24) 24 hours
 
-/ For testing let's list all links
-- UrlWord.all.each do |word|
-  - next unless word.link_id
-  .link
-    h3 = word.link.url
-    p = word.word
-    p = word.expire_date
+      button.small-12 Create Shout URL

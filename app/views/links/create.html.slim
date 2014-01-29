@@ -1,11 +1,30 @@
 
-h1 You created the link!
+.row
+  .large-6.columns.large-centered
+    h3.subtitle YOU CREATED A
+    h1.super-bold
+      a href="/" <span>SHOUT!</span> URL
 
-h3 Here it is:
+    a.panel.shout-url href="/#{@word}"
+      h3.subtitle YOUR SHOUT WORD IS:
+      h1.super-bold = @word
 
-= link_to "mks.io/#{@link.url_word.word}", @link.url
+.stats.row
+  .large-8.columns.large-offset-3
+    .row
+      .large-4.columns
+        h3.key SHOUT URL
+      .large-8.columns
+        h3.val = link_to "http://mks.io/#{@word}"
 
-.link
-  h3 = @link.url
-  p = @link.url_word.word
-  p = @link.url_word.expire_date
+    .row
+      .large-4.columns
+        h3.key LONG URL
+      .large-8.columns
+        h3.val = link_to @link.url
+
+    .row
+      .large-4.columns
+        h3.key EXPIRES IN
+      .large-8.columns
+        h3.val = expire_time(@minute_count)

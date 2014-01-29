@@ -9,6 +9,7 @@ gem 'randumb', '~> 0.4.1'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
+gem 'foundation-rails', '~> 5.0.3.1'
 
 # Better than haml
 gem 'slim-rails', '~> 2.0.4'

@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require foundation/foundation
+//= require foundation/foundation.alert
+
+$(function(){ $(document).foundation(); });
