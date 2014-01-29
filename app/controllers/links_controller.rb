@@ -49,7 +49,7 @@ class LinksController < ApplicationController
   private
 
   def valid_minute_counts
-    [5, 30, 60, 60*12, 60*24]
+    [5, 30, 60, 60*6, 60*12]
   end
 
   def link_params
