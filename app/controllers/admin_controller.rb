@@ -3,6 +3,7 @@ class AdminController < ApplicationController
 
   def new
     @link = Link.new
+    @admin_words = UrlWord.where('expire_date > ?', DateTime.now + 24.hours).includes(:link)
   end
 
   def create
@@ -27,6 +28,9 @@ class AdminController < ApplicationController
   end
 
   def destroy
+    word = UrlWord.find_by(:word => params[:word])
+    word.update :link_id => nil, :expire_date => DateTime.now
+    redirect_to admin_path
   end
 
   private

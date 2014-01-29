@@ -29,3 +29,20 @@
       input type="text" name="word" value=@word
 
       button.small-12 Create Shout URL
+
+- if @admin_words.any?
+  .row.lt
+    .large-8.large-centered.columns
+      h1 Admin Links
+
+      table
+        thead
+          th Word
+          th URL
+          th
+        tbody
+          - @admin_words.each do |word|
+            tr
+              td = word.word
+              td = word.link.url
+              td = link_to 'Delete', admin_path(:word => word.word), :method => :delete
