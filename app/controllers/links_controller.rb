@@ -44,7 +44,7 @@ class LinksController < ApplicationController
 
     if word.nil? || word.link_id.nil? || word.expired?
       # Free word if needed
-      word.update(:link_id => nil) if word.expired?
+      word.update(:link_id => nil) if word && word.expired?
       raise ActionController::RoutingError.new('Not Found')
     else
       redirect_to word.link.url
