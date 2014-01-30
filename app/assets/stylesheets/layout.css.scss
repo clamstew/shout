@@ -45,6 +45,14 @@ a.panel.shout-url {
   table { width: 100%; }
   table tr { word-wrap: break-word; }
 }
+.so {
+  text-align: center;
+  position: relative;
+  text-transform: uppercase;
+  top: -1.2em;
+  a { color: darken(#3dd68f, 12%); }
+  a:hover { text-decoration: underline; }
+}
 
 .powered-by {
   color: #b0b0b0;

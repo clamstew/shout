@@ -5,6 +5,8 @@
     h1.super-bold
       a href="/" ADMIN PANEL
 
+    .so = link_to '[Sign out]', sign_out_path, :method => :delete
+
     = form_for @link, :url => admin_path do |f|
 
       - if params[:action] != 'new' && @word.blank?

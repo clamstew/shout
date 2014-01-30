@@ -33,6 +33,11 @@ class AdminController < ApplicationController
     redirect_to admin_path
   end
 
+  def sign_out
+    session.clear
+    redirect_to root_path
+  end
+
   private
 
   def link_params
