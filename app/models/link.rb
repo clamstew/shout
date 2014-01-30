@@ -1,4 +1,4 @@
 class Link < ActiveRecord::Base
   validates :url, :url => true
-  has_one :url_word
+  has_many :url_words
 end

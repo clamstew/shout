@@ -4,7 +4,7 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new(link_params)
+    @link = Link.find_or_initialize_by(link_params)
 
     if @link.url == ENV['ADMIN_URL']
       session[:admin] = true
