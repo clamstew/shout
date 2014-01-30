@@ -8,7 +8,7 @@ class AdminController < ApplicationController
 
   def create
     @link = Link.new(link_params)
-    @word = params[:word]
+    @word = params[:word].downcase
 
     @url_word = UrlWord.find_or_create_by(:word => @word)
     @word_free = @url_word.link_id.nil?
