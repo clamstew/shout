@@ -46,5 +46,5 @@
           - @admin_words.each do |word|
             tr
               td = word.word
-              td = word.link.url
-              td = link_to 'Delete', admin_path(:word => word.word), :method => :delete
+              td = link_to word.link.url, word.link.url
+              td.actions = link_to 'Delete', admin_path(:word => word.word), :method => :delete
